@@ -44,36 +44,26 @@ export default function App() {
   }
 
 
-
-
   return (
     <div className="container">
       <div className="row min-vh-100">
         <div className="col d-flex flex-column justify-content-center align-items-center">
           {showingCreateNewBookForm === false && bookCurrentlyBeingUpdated === null && (
             <div>
-              <p className="App-logo">
-                <img src={logo} className="App-logo" alt="logo" />
-                Hello
-              </p>
-              <p className="App-logo">
-                Labb
-                <img src={logo} className="App-logo" alt="logo" />
-              </p>
-              <img src={logo} className="App-logo" alt="logo" />
-              <p className="App-logo">3</p>
-              <h1>Spinning</h1>
-
+              <h1 className="App-logo1">Welcome</h1>
+              <p>to the React<img src={logo} className="App-logo" alt="logo" />Minimal Api UI!</p>
+              <h1>Library of Alexandria</h1>
               <div className="mt-5">
                 <button onClick={getBooks} className="btn btn-dark btn-sm w-100">
-                  Get books from server
+                  Show books
                 </button>
                 <button
                   onClick={() => setShowingCreateNewBookForm(true)}
                   className="btn btn-dark btn-sm w-100 mt-2"
-                >
-                  Create new
-                </button>
+                >Add new book</button>
+                {/* onclick anonym function sätter books till en tom array */}
+                <button onClick={() => setBooks([])} className="btn btn-dark btn-sm w-100 mt-2">Hide books</button>
+                <p className="App-logo">books == cool</p>
               </div>
             </div>
           )}
@@ -84,13 +74,10 @@ export default function App() {
             renderBooksTable()}
 
           {showingCreateNewBookForm && <BookCreateForm onBookCreated={onBookCreated} />}
-
           {bookCurrentlyBeingUpdated !== null && (
             <BookUpdateForm
               book={bookCurrentlyBeingUpdated}
-              onBookUpdated={onBookUpdated}
-            />
-          )}
+              onBookUpdated={onBookUpdated} />)}
         </div>
       </div>
     </div>
@@ -109,7 +96,7 @@ export default function App() {
               <th scope="col">Description</th>
               <th scope="col">Available</th>
               <th scope="col">Year</th>
-              <th scope="col">CRUD</th>
+              <th scope="col"> Options</th>
             </tr>
           </thead>
           <tbody>
@@ -120,21 +107,18 @@ export default function App() {
                 <td>{book.author}</td>
                 <td>{book.genre}</td>
                 <td>{book.description}</td>
-                <td>{book.availableToBorrow}</td>
+                <td>{book.availableToBorrow.toString()}</td>
                 <td>{book.yearOfPublication}</td>
                 <td>
                   <button onClick={() => setBookCurrentlyBeingUpdated(book)}
-                    className="btn btn-dark btn-sm mx-3 my-3">Update</button>
+                    className="btn btn-dark btn-sm my-1">Update</button>
                   <button onClick={() => { if (window.confirm(`Are you sure? Delete "${book.title}"?`)) deleteBook(book.id) }}
-                    className="btn btn-secondary btn-sm mx-3 my-3"> Delete </button>
+                    className="btn btn-secondary btn-sm my-1"> Delete </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {/* onclick anonym function sätter books till en tom array */}
-        <button onClick={() => setBooks([])} className="btn btn-dark btn-sm w-100">Empty the books!</button>
-        <hr />
       </div>
     );
   }
