@@ -2,12 +2,23 @@
   text-align: center;
 }
 
+.checkboxDesign{
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  accent-color: green;
+}
+
+/* samma som ovan men endast på indexpage och behöver ändras */
+.checkboxDesignIndexPage{
+  margin-left: 10px;  
+  width: 20px;
+  height: 20px;
+  accent-color: green;
+}
+
 .App-logo {
   height: 1vmin;
-  pointer-events: none;
-}
-.App-logo1 {
-  height: 5vmin;
   pointer-events: none;
 }
 
@@ -16,13 +27,8 @@
     animation: App-logo-spin infinite 10s alternate-reverse;
     -webkit-animation: App-logo-spin infinite 10s alternate-reverse;
 }
-.App-logo1 {
-  margin-top: 5rem;
-  animation: App-logo1-spin infinite 70s alternate-reverse;
-  -webkit-animation: App-logo1-spin infinite 70s alternate-reverse;
 }
-}
-
+ 
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -59,10 +65,10 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(600deg);
-    -webkit-transform: rotate(600deg);
-    -moz-transform: rotate(600deg);
-    -ms-transform: rotate(600deg);
-    -o-transform: rotate(600deg);
+    transform: rotate(400deg);
+    -webkit-transform: rotate(400deg);
+    -moz-transform: rotate(400deg);
+    -ms-transform: rotate(400deg);
+    -o-transform: rotate(400deg);
 }
 }

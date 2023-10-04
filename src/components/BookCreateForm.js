@@ -2,11 +2,11 @@ import React, { useState } from "react"; //rfc short for 'react functional compo
 
 export default function BookCreateForm(props) {
     const initialFormData = Object.freeze({
-        title: "Book title...",
-        author: "Book author...",
-        genre: "Book genre...",
+        title: "",
+        author: "",
+        genre: "",
         yearOfPublication: new Date().getFullYear().toString(),
-        description: "Book description...",
+        description: "",
         availableToBorrow: true,
     });
 
@@ -115,7 +115,7 @@ export default function BookCreateForm(props) {
                     value={formData.availableToBorrow}
                     name="availableToBorrow"
                     type="checkbox"
-                    className="form-control"
+                    className="checkboxDesign"
                     onChange={handleChange}
                 />
             </div>

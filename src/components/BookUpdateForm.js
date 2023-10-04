@@ -113,9 +113,10 @@ export default function BookUpdateForm(props) {
         <label className="h3 form-label">Available</label>
         <input
           value={formData.availableToBorrow}
+          className="checkboxDesign"
           name="availableToBorrow"
           type="checkbox"
-          className="form-control"
+          checked={formData.availableToBorrow}
           onChange={handleChange}
         />
       </div>
