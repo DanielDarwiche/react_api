@@ -111,22 +111,30 @@ export default function BookUpdateForm(props) {
       </div>
       <div className="mt-3">
         <label className="h3 form-label">Available</label>
+
         <input
-          value={formData.availableToBorrow}
-          className="checkboxDesign"
+          checked={formData.availableToBorrow}
           name="availableToBorrow"
           type="checkbox"
-          checked={formData.availableToBorrow}
-          onChange={handleChange}
+          className="form-checkbox"
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              availableToBorrow: e.target.checked,
+            });
+          }}
         />
+
+
+
       </div>
 
-      <button onClick={handleSubmit} className="btn btn-dark btn-sm w-100 mt-3">
-        Submit
+      <button onClick={handleSubmit} className="btn btn-success btn-md w-100 mt-2">
+        Update book
       </button>
       <button
         onClick={() => props.onBookUpdated(null)}
-        className="btn btn-dark btn-sm w-100 mt-3"
+        className="btn btn-warning btn-md w-100 mt-2 mb-5"
       >
         Cancel
       </button>
