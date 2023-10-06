@@ -1,26 +1,26 @@
 import React, {useState} from 'react'
 import './SearchBar.css';
 
-
 const SearchBar = ({setResults}) => {
     const urlAuthor= `https://localhost:7175/api/book/author/{author}`;
-    const urlTEST= `https://jsonplaceholder.typicode.com/users`;
+    const apiUrl = "https://localhost:7175/api/books"; //webapi-url som ska kopplas
+
 //store below into stateful variable..input takeing a look at, setInput change variables value
 const [input, setInput] = useState("")
 //when user input text, fetch data from ext api..takes value(text to search for)
 const fetchData = (value)=> {
-    fetch(urlTEST)
+    fetch(apiUrl)
     .then((response)=> response.json())
-    .then((json)=>{
+    .then((books)=>{
  //arrayfunction called filter...goes through each element in array
         //takes the user att specifik index....returns true if matches , else false
         //checks if value is given at all...wont render empty value
-        console.log(json);
-        const results= json.filter((user)=>{
-            return value && user && user.name && user.name.toLowerCase().includes(value);
+        console.log(books);
+        const results= books.result.filter((bok)=>{
+            return value && bok && bok.author && bok.author.toLowerCase().includes(value);
         })
         setResults(results);
-        console.log(results);
+        console.log(books );
 
         //1.fetch data 2.filter it 3.setResults to results//FILTer är filtrering på frontend-sidan!
     });

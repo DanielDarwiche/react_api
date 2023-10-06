@@ -6,9 +6,9 @@ export const SearchResult = ({result}) => {
   return   ( 
   <div 
   className="search-result"
-  onClick={(e) => alert(`You clicked on ${result.name}`)}
+  onClick={(e) => alert(`You can find the book written by ${result.author} via the id, in the booklist!`)}
   >
-    {result.name}
+    <b>{result.author.toUpperCase()}</b> ('{result.title}', ID:{result.id})  
     </div>
     );
 };
