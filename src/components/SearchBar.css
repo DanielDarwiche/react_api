@@ -24,7 +24,7 @@
     background-color: #B1F2EC;
     display: flex;
     flex-direction: column;
-    /*ifwehavemoreelementsthanmaxheighuseoverflow-y*/max-height: 5rem;
+    /*ifwehavemoreelementsthanmaxheighuseoverflow-y*/max-height: 7rem;
     overflow-y: scroll ;
     border-radius: 10px;
     -webkit-border-radius: 10px;

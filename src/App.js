@@ -3,13 +3,19 @@ import React, { useState } from "react";
 import BookCreateForm from "./components/BookCreateForm";
 import BookUpdateForm from "./components/BookUpdateForm";
 import SearchBar from "./components/SearchBar";
+import TitleSearchBar from "./components/TitleSearchBar";
+import IDSearchBar from "./components/IDSearchBar";
 import { SearchResultsList } from "./components/SearchResultsList";
+import { TitleSearchResultsList } from "./components/TitleSearchResultsList";
+import { IDSearchResultsList } from "./components/IDSearchResultsList";
 
 export default function App() {
   const [books, setBooks] = useState([]); //store all books in server in js array som här är tom
   const [showingCreateNewBookForm, setShowingCreateNewBookForm] = useState(false);
   const [bookCurrentlyBeingUpdated, setBookCurrentlyBeingUpdated] = useState(null);
   const [results, setResults] = useState([]);
+  const [titleResults, titleSetResults] = useState([]);
+  const [IDResults, IDSetResults] = useState([]);
 
   async function getBooks() {
     const apiUrl = "https://localhost:7175/api/books"; //webapi-url som ska kopplas
@@ -71,17 +77,16 @@ export default function App() {
                 </div>
 
 
+                <div className="search-bar-container">
+                  <TitleSearchBar titleSetResults={titleSetResults} />
+                  <TitleSearchResultsList titleResults={titleResults} />
+                </div>
 
+                <div className="search-bar-container">
+                  <IDSearchBar IDSetResults={IDSetResults} />
+                  <IDSearchResultsList IDResults={IDResults} />
+                </div>
 
-                <button
-                  className="btn btn-warning btn-sm w-40 mt-1 mx-2"
-
-                >Search by Title&emsp;<i class="bi bi-file-text-fill"></i></button>
-                <button
-                  className="btn btn-secondary btn-sm w-40 mt-1 mx-2"
-
-                >Search by Id&emsp;<i class="bi bi-info-circle"></i>
-                </button>
               </div>
             </div>
           )}
@@ -136,7 +141,7 @@ export default function App() {
                 <td>{book.yearOfPublication}</td>
                 <td>
                   <button onClick={() => setBookCurrentlyBeingUpdated(book)}
-                    className="btn btn-warning btn-sm my-1">Update<i class="bi bi-balloon"></i></button>
+                    className="btn btn-warning btn-sm my-1 " >Update<i class="bi bi-balloon"></i></button>
                   <button onClick={() => { if (window.confirm(`Are you sure? Delete "${book.title}"? `)) deleteBook(book.id) }}
                     className="btn btn-danger btn-sm my-1  "> Delete<i class="bi bi-clipboard2-x"></i></button>
                 </td>
